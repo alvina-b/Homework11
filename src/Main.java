@@ -1,5 +1,81 @@
+import jdk.jfr.FlightRecorder;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    public static void leapYear(int year) {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            System.out.println(year + " - Год високосный");
+        } else {
+            System.out.println(year + " - Год не високосный");
+        }
     }
-}
+
+    public static void main(String[] args) {
+//Задача 1
+        System.out.println("  Задача 1");
+        int year = 2020;
+        leapYear(year);
+
+        //Задача 2
+        System.out.println("  Задача 2");
+        String osName = "iOS";
+        int clientOS = getClientOS(osName);
+        int currentYear = 2023;
+        int clientDeviceYear = 2022;
+        int liteOrStand = getVersion(currentYear, clientDeviceYear);
+        System.out.print("Установите ");
+        if (liteOrStand == 0) {
+            System.out.print("облегченную версию приложения");
+        } else {
+            System.out.print("стандартную версию приложения");
+        }
+        if (clientOS == 0) {
+            System.out.println(" для iOS");
+            return;
+        }
+        System.out.println(" для Android");
+
+        //Задача 3
+
+        System.out.println("  Задача 3");
+        int deliveryDistance = 95;
+       int deliveryTime = getDeliveryTime(deliveryDistance);
+        deliveryTime = getDeliveryTime(95);
+        if (deliveryTime == -1) {
+            System.out.println("Расстояние должно быть больше 1");
+        } else {
+            System.out.println("Потребуется дней: " + deliveryTime);
+        }
+
+
+    }
+
+    public static int getClientOS(String name) {
+        if (name.equals("iOS")) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    public static int getVersion(int currentYear, int clientDeviceYear) {
+
+        if (clientDeviceYear < currentYear) {
+            return 0;
+        }
+        return 1;
+    }
+
+    public static int getDeliveryTime(int deliveryDistance) {
+        int deliveryDay = 1;
+        if (deliveryDistance > 20) {
+            deliveryDay++;
+        }
+        if (deliveryDistance > 60) {
+            deliveryDay++;
+        }
+        if (deliveryDistance > 100) {
+            System.out.println("Потребуется дней больше" + deliveryDay);
+        }
+        return deliveryDay;
+            }
+        }
