@@ -33,12 +33,18 @@ public class Main {
             return;
         }
         System.out.println(" для Android");
+
         //Задача 3
+
         System.out.println("  Задача 3");
         int deliveryDistance = 95;
-        int deliveryDay = 1;
-       int deliveryTime = getDeliveryTime(deliveryDistance, deliveryDay);
-        System.out.println("Потребуется дней: " + deliveryTime);
+       int deliveryTime = getDeliveryTime(deliveryDistance);
+        deliveryTime = getDeliveryTime(95);
+        if (deliveryTime == -1) {
+            System.out.println("Расстояние должно быть больше 1");
+        } else {
+            System.out.println("Потребуется дней: " + deliveryTime);
+        }
 
 
     }
@@ -59,12 +65,16 @@ public class Main {
         return 1;
     }
 
-    public static int getDeliveryTime(int deliveryDistance, int deliveryDay) {
+    public static int getDeliveryTime(int deliveryDistance) {
+        int deliveryDay = 1;
         if (deliveryDistance > 20) {
             deliveryDay++;
         }
         if (deliveryDistance > 60) {
             deliveryDay++;
+        }
+        if (deliveryDistance > 100) {
+            System.out.println("Потребуется дней больше" + deliveryDay);
         }
         return deliveryDay;
             }
